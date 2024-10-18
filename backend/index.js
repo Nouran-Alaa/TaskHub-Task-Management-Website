@@ -9,6 +9,13 @@ const userRouter = require("./routers/userRouter");
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+app.use(
+  cors({
+    origin: [process.env.front_end_url],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(morgan("dev"));
 dotenv.config();
 const dbConnect = require("./config/dbConnect");
